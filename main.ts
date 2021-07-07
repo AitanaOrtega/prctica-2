@@ -1,9 +1,22 @@
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    Vermell.setPosition(randint(0, 100), randint(0, 120))
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    controller.moveSprite(Verd, 200, 200)
+})
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
-    controller.moveSprite(Verd, 150, 150)
+	
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    controller.moveSprite(Verd, 50, 50)
+	
 })
+controller.A.onEvent(ControllerButtonEvent.Released, function () {
+    controller.moveSprite(Verd, 100, 100)
+})
+sprites.onDestroyed(SpriteKind.Player, function (sprite) {
+	
+})
+let Vermell: Sprite = null
 let Verd: Sprite = null
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -145,8 +158,8 @@ Verd = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
-controller.moveSprite(Verd, 150, 150)
-let Vermell = sprites.create(img`
+controller.moveSprite(Verd, 100, 100)
+Vermell = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -166,3 +179,4 @@ let Vermell = sprites.create(img`
     `, SpriteKind.Player)
 Vermell.setPosition(25, 25)
 Vermell.follow(Verd, 50)
+let projectile = sprites.createProjectileFromSprite(assets.image`Projectile`, Vermell, randint(0, 100), randint(0, 120))
