@@ -13,9 +13,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     controller.moveSprite(Verd, 100, 100)
 })
-sprites.onDestroyed(SpriteKind.Player, function (sprite) {
-	
-})
+let projectile: Sprite = null
 let Vermell: Sprite = null
 let Verd: Sprite = null
 scene.setBackgroundImage(img`
@@ -179,4 +177,7 @@ Vermell = sprites.create(img`
     `, SpriteKind.Player)
 Vermell.setPosition(25, 25)
 Vermell.follow(Verd, 50)
-let projectile = sprites.createProjectileFromSprite(assets.image`Projectile`, Vermell, randint(0, 100), randint(0, 120))
+forever(function () {
+    pause(1000)
+    projectile = sprites.createProjectileFromSprite(assets.image`Projectile`, Vermell, randint(0, 120), randint(0, 160))
+})
